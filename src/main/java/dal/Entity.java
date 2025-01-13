@@ -3,8 +3,8 @@ package dal;
 import java.util.Date;
 
 public abstract class Entity {
-    String name;
-    Date creationDate;
+    protected String name;
+    protected Date creationDate;
 
     public Entity(String name) {
         this.name = name;
