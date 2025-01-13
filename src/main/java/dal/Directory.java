@@ -12,6 +12,8 @@ public class Directory extends Entity {
     }
 
     public void addEntity(Entity entity) {
+        if (contents.get(entity.name) != null)
+            throw new IllegalArgumentException(entity.name+" already exists");
         contents.put(entity.name, entity);
     }
 

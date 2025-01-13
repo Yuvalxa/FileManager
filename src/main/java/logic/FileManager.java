@@ -25,7 +25,7 @@ public class FileManager {
     public void addDir(String parentDirName, String dirName) {
         Directory parentDir = findDirectory(parentDirName);
         if (parentDir != null) {
-            parentDir.addEntity(new Directory(dirName));
+            parentDir.addEntity(new Directory(dirName)); // could throw error file already exists
         } else {
             System.out.println("Parent directory not found: " + parentDirName);
         }
