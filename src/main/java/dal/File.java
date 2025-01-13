@@ -5,6 +5,12 @@ public class File extends Entity {
 
     public File(String name, long size) {
         super(name);
+        setSize(size);
+    }
+
+    public void setSize(long size) {
+        if(size <0)
+            throw new IllegalArgumentException("Name cannot exceed 32 characters.");
         this.size = size;
     }
 
