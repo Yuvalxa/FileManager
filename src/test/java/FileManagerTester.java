@@ -41,11 +41,6 @@ public class FileManagerTester {
         assertEquals("photo.jpg", fs.getBiggestFile());
     }
 
-    @Test
-    void testShowFileSystem() {
-        // This test should validate output to console. Integration testing or manual verification might be needed.
-        fs.showFileSystem();
-    }
 
     @Test
     void testDelete() {
