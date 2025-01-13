@@ -15,6 +15,8 @@ public class Main {
 
         System.out.println("File system structure:");
         fs.showFileSystem();
+        fs.delete("root");
+        fs.showFileSystem();
 
         System.out.println("Biggest file: " + fs.getBiggestFile());
         System.out.println("Size of 'resume.pdf': " + fs.getFileSize("resume.pdf") + " bytes");
