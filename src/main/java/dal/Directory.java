@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 // Directory class
-class Directory extends Entity {
+public class Directory extends Entity {
     Map<String, Entity> contents = new HashMap<>();
 
     public Directory(String name) {
@@ -21,6 +21,10 @@ class Directory extends Entity {
 
     public Entity getEntity(String name) {
         return contents.get(name);
+    }
+
+    public Map<String, Entity> getContents() {
+        return contents;
     }
 
     @Override

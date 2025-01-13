@@ -2,7 +2,7 @@ package dal;
 
 import java.util.Date;
 
-abstract class Entity {
+public abstract class Entity {
     String name;
     Date creationDate;
 
