@@ -107,8 +107,3 @@ you can check more in FileManagerTester
 - **Recursion**: Many operations use recursion to navigate the hierarchical structure.
 
 ---
-
-
-## License
-This project is licensed under the MIT License. See the LICENSE file for more details.
-
