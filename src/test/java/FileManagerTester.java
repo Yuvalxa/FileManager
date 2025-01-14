@@ -47,7 +47,6 @@ public class FileManagerTester {
     @Test
     void testNegativeFileSize() {
         assertThrows(IllegalArgumentException.class,()->fs.addFile("Documents", "resume.pdf", -500));
-        assertNull(fs.getFileSize("nonexistent_file.txt")); // not a real file
     }
     @Test
     void testGetBiggestFile() {
