@@ -45,11 +45,17 @@ public class FileManagerTester {
         assertNull(fs.getFileSize("nonexistent_file.txt")); // not a real file
     }
     @Test
+    void testNegativeFileSize() {
+        assertThrows(IllegalArgumentException.class,()->fs.addFile("Documents", "resume.pdf", -500));
+        assertNull(fs.getFileSize("nonexistent_file.txt")); // not a real file
+    }
+    @Test
     void testGetBiggestFile() {
         fs.addFile("Pictures", "photo.jpg", 15000000);
         fs.addFile("Pictures", "photo2.jpg", 1);
         assertEquals("photo.jpg", fs.getBiggestFile());
         fs.delete("photo.jpg");
+        fs.delete("photo2.jpg");
     }
     @Test
     void testDeleteFolder() { // Case: if folder deleted files inside gets deletes as well
