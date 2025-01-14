@@ -3,9 +3,6 @@ import dal.File;
 import logic.FileManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.nio.file.FileSystem;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FileManagerTester {
@@ -48,5 +45,30 @@ public class FileManagerTester {
         assertNull(fs.getFileSize("beach.png"));
         fs.delete("Documents");
         assertNull(fs.getFileSize("resume.pdf"));
+    }
+    @Test
+    void testMaxNameLength() {
+        String longFileName = "a".repeat(32); // 32-character file name
+        fs.addFile("Documents", longFileName, 12345);
+        assertEquals(12345, fs.getFileSize(longFileName));
+        fs.delete(longFileName);
+
+        String longDirName = "b".repeat(32); // 32-character directory name
+        fs.addDir("root", longDirName);
+        fs.delete(longDirName);
+    }
+
+    @Test
+    void testUniqueFileName() {
+        fs.addFile("Documents", "unique_file.txt", 25000);
+        assertThrows(IllegalArgumentException.class, () -> fs.addFile("Documents", "unique_file.txt", 5000));
+        fs.delete("unique_file.txt");
+    }
+
+    @Test
+    void testUniqueDirName() {
+        fs.addDir("root", "UniqueDirectory");
+        assertThrows(IllegalArgumentException.class, () -> fs.addDir("root", "UniqueDirectory"));
+        fs.delete("UniqueDirectory");
     }
 }

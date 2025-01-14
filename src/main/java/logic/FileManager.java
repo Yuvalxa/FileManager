@@ -18,21 +18,15 @@ public class FileManager {
      * Space Complexity: O(1).
      */
     public void addFile(String parentDirName, String fileName, long fileSize) {
-        try {
-            Directory parentDir = findDirectory(parentDirName);
-            if (parentDir != null) {
-                if (parentDir.getContents().containsKey(fileName)) {
-                    throw new IllegalArgumentException("File or directory with the name '" + fileName + "' already exists in directory: " + parentDirName);
-                } else {
-                    parentDir.addEntity(new File(fileName, fileSize));
-                }
+        Directory parentDir = findDirectory(parentDirName);
+        if (parentDir != null) {
+            if (parentDir.getContents().containsKey(fileName)) { // Todo throw error already exists
+                throw new IllegalArgumentException("File or directory with the name '" + fileName + "' already exists in directory: " + parentDirName);
             } else {
-                System.out.println("Parent directory not found: " + parentDirName);
+                parentDir.addEntity(new File(fileName, fileSize));
             }
-        } catch (IllegalArgumentException e) {
-            System.err.println("Error adding file: " + e.getMessage());
-        } catch (Exception e) {
-            System.err.println("An unexpected error occurred while adding the file: " + e.getMessage());
+        } else {
+            System.out.println("Parent directory not found: " + parentDirName);
         }
     }
     /**
@@ -41,21 +35,15 @@ public class FileManager {
      * Space Complexity: O(1).
      */
     public void addDir(String parentDirName, String dirName) {
-        try {
-            Directory parentDir = findDirectory(parentDirName);
-            if (parentDir != null) {
-                if (parentDir.getContents().containsKey(dirName)) {
-                    throw new IllegalArgumentException("File or directory with the name '" + dirName + "' already exists in directory: " + parentDirName);
-                } else {
-                    parentDir.addEntity(new Directory(dirName));
-                }
+        Directory parentDir = findDirectory(parentDirName);
+        if (parentDir != null) {
+            if (parentDir.getContents().containsKey(dirName)) { // Todo throw error already exists
+                throw new IllegalArgumentException("Directory  with the name '" + dirName + "' already exists in directory: " + parentDirName);
             } else {
-                System.out.println("Parent directory not found: " + parentDirName);
+                parentDir.addEntity(new Directory(dirName));
             }
-        } catch (IllegalArgumentException e) {
-            System.err.println("Error adding directory: " + e.getMessage());
-        } catch (Exception e) {
-            System.err.println("An unexpected error occurred while adding the directory: " + e.getMessage());
+        } else {
+            System.out.println("Parent directory not found: " + parentDirName);
         }
     }
     /**
