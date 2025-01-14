@@ -27,16 +27,6 @@ This project utilizes object-oriented programming principles to create a robust 
 - An Integrated Development Environment (IDE) such as IntelliJ IDEA or Eclipse
 ---
 
-## Testing
-The project includes unit tests to validate its functionality. Tests are written using JUnit 5.
-
-### Key Tests
-- **Maximum Name Length**: Verifies that file and directory names with a maximum of 32 characters are supported.
-- **Unique Names**: Ensures file and directory names are unique within the same parent directory.
-- **Cleanup**: Deletes created test files and directories after each test.
-
-## Usage
-
 
 ## Class Overview
 ### `FileManager`
